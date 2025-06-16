@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/sitepark/ies-userrepository-core/graph/badge.svg?token=eRLHR95gFb)](https://codecov.io/gh/sitepark/ies-userrepository-core)
+[![codecov](https://codecov.io/github/sitepark/ies-audit-core/graph/badge.svg?token=hUY0CbkMnj)](https://codecov.io/github/sitepark/ies-audit-core)
 [![Known Vulnerabilities](https://snyk.io/test/github/sitepark/ies-userrepository-core/badge.svg)](https://snyk.io/test/github/sitepark/ies-userrepository-core/)
 # Audit Core Package
 
