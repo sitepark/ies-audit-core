@@ -31,6 +31,7 @@ import java.util.Objects;
  *   <li>Monitoring and reporting across bounded contexts
  * </ul>
  */
+@SuppressWarnings("PMD.DataClass")
 public final class AuditLog {
 
   private final String id;
@@ -170,6 +171,7 @@ public final class AuditLog {
         + "]";
   }
 
+  @SuppressWarnings("PMD.TooManyMethods")
   public static final class Builder {
     private String id;
     private String description;

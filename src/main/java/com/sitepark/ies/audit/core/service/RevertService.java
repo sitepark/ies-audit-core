@@ -3,6 +3,7 @@ package com.sitepark.ies.audit.core.service;
 import com.sitepark.ies.audit.core.domain.entity.AuditLog;
 import com.sitepark.ies.audit.core.port.ReversalHandlerRegistry;
 
+@SuppressWarnings("PMD.LawOfDemeter")
 public class RevertService {
 
   private final ReversalHandlerRegistry handlerRegistry;
