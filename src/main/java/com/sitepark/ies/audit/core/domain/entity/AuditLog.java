@@ -2,7 +2,7 @@ package com.sitepark.ies.audit.core.domain.entity;
 
 import com.sitepark.ies.audit.core.domain.value.AuditLogAction;
 import com.sitepark.ies.audit.core.domain.value.AuditLogEntityType;
-import java.time.OffsetDateTime;
+import java.time.Instant;
 import java.util.Objects;
 
 /**
@@ -41,7 +41,7 @@ public final class AuditLog {
   private final AuditLogAction action;
   private final String oldData;
   private final String newData;
-  private final OffsetDateTime timestamp;
+  private final Instant timestamp;
   private final String userId;
   private final String authorityName;
   private final String batchId;
@@ -92,7 +92,7 @@ public final class AuditLog {
     return newData;
   }
 
-  public OffsetDateTime getTimestamp() {
+  public Instant getTimestamp() {
     return timestamp;
   }
 
@@ -180,7 +180,7 @@ public final class AuditLog {
     private AuditLogAction action;
     private String oldData;
     private String newData;
-    private OffsetDateTime timestamp;
+    private Instant timestamp;
     private String userId;
     private String authorityName;
     private String batchId;
@@ -236,7 +236,7 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder timestamp(OffsetDateTime timestamp) {
+    public Builder timestamp(Instant timestamp) {
       this.timestamp = timestamp;
       return this;
     }
