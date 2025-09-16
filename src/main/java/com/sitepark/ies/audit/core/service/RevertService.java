@@ -1,22 +1,20 @@
 package com.sitepark.ies.audit.core.service;
 
-import com.sitepark.ies.audit.core.domain.entity.AuditLog;
 import com.sitepark.ies.audit.core.port.ReversalHandlerRegistry;
+import com.sitepark.ies.sharedkernel.audit.RevertRequest;
+import jakarta.inject.Inject;
 
 @SuppressWarnings("PMD.LawOfDemeter")
 public class RevertService {
 
   private final ReversalHandlerRegistry handlerRegistry;
 
+  @Inject
   public RevertService(ReversalHandlerRegistry handlerRegistry) {
     this.handlerRegistry = handlerRegistry;
   }
 
-  public void revert(AuditLog auditLog) {
-    this.handlerRegistry.getAll().stream()
-        .filter(h -> h.supports(auditLog.getEntityType().getCode(), auditLog.getAction().getCode()))
-        .findFirst()
-        .orElseThrow(() -> new UnsupportedOperationException("No handler found"))
-        .revert(auditLog);
+  public void revert(RevertRequest request) {
+    this.handlerRegistry.getHandler(request.entityType()).revert(request);
   }
 }

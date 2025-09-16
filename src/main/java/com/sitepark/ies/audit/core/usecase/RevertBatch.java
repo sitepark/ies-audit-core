@@ -1,21 +1,25 @@
 package com.sitepark.ies.audit.core.usecase;
 
 import com.sitepark.ies.audit.core.port.AuditLogRepository;
-import com.sitepark.ies.audit.core.service.RevertService;
 import jakarta.inject.Inject;
+import java.util.List;
 
 public final class RevertBatch {
 
   private final AuditLogRepository repository;
-  private final RevertService revertService;
+  RevertActions revertActionsUseCase;
 
   @Inject
-  RevertBatch(AuditLogRepository repository, RevertService revertService) {
+  RevertBatch(AuditLogRepository repository, RevertActions revertActionsUseCase) {
     this.repository = repository;
-    this.revertService = revertService;
+    this.revertActionsUseCase = revertActionsUseCase;
   }
 
   public void revertBatch(String batchId) {
-    this.repository.getAuditLogsByBatchId(batchId).forEach(revertService::revert);
+    List<String> auditLogIds = this.repository.getAuditLogIdsByBatchId(batchId);
+    if (auditLogIds.isEmpty()) {
+      return;
+    }
+    this.revertActionsUseCase.revert(auditLogIds);
   }
 }

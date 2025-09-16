@@ -1,8 +1,8 @@
 package com.sitepark.ies.audit.core.port;
 
-import java.util.List;
+import com.sitepark.ies.sharedkernel.audit.ReversibleAuditHandler;
 
 @SuppressWarnings("PMD.ImplicitFunctionalInterface")
 public interface ReversalHandlerRegistry {
-  List<ReversibleAuditHandler> getAll();
+  ReversibleAuditHandler getHandler(String entityType);
 }

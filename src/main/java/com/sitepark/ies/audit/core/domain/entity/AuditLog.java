@@ -1,7 +1,5 @@
 package com.sitepark.ies.audit.core.domain.entity;
 
-import com.sitepark.ies.audit.core.domain.value.AuditLogAction;
-import com.sitepark.ies.audit.core.domain.value.AuditLogEntityType;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -35,10 +33,9 @@ import java.util.Objects;
 public final class AuditLog {
 
   private final String id;
-  private final String description;
-  private final AuditLogEntityType entityType;
+  private final String entityType;
   private final String entityId;
-  private final AuditLogAction action;
+  private final String action;
   private final String oldData;
   private final String newData;
   private final Instant timestamp;
@@ -48,7 +45,6 @@ public final class AuditLog {
 
   private AuditLog(Builder builder) {
     this.id = builder.id;
-    this.description = builder.description;
     this.entityType = builder.entityType;
     this.entityId = builder.entityId;
     this.action = builder.action;
@@ -64,47 +60,43 @@ public final class AuditLog {
     return new Builder();
   }
 
-  public String getId() {
+  public String id() {
     return id;
   }
 
-  public String getDescription() {
-    return description;
-  }
-
-  public AuditLogEntityType getEntityType() {
+  public String entityType() {
     return entityType;
   }
 
-  public String getEntityId() {
+  public String entityId() {
     return entityId;
   }
 
-  public AuditLogAction getAction() {
+  public String action() {
     return action;
   }
 
-  public String getOldData() {
+  public String oldData() {
     return oldData;
   }
 
-  public String getNewData() {
+  public String newData() {
     return newData;
   }
 
-  public Instant getTimestamp() {
+  public Instant timestamp() {
     return timestamp;
   }
 
-  public String getUserId() {
+  public String userId() {
     return userId;
   }
 
-  public String getAuthorityName() {
+  public String authorityName() {
     return authorityName;
   }
 
-  public String getBatchId() {
+  public String batchId() {
     return batchId;
   }
 
@@ -116,7 +108,6 @@ public final class AuditLog {
   public int hashCode() {
     return Objects.hash(
         id,
-        description,
         entityType,
         entityId,
         action,
@@ -132,7 +123,6 @@ public final class AuditLog {
   public boolean equals(Object o) {
     if (!(o instanceof AuditLog other)) return false;
     return Objects.equals(id, other.id)
-        && Objects.equals(description, other.description)
         && Objects.equals(entityType, other.entityType)
         && Objects.equals(entityId, other.entityId)
         && Objects.equals(action, other.action)
@@ -148,8 +138,6 @@ public final class AuditLog {
   public String toString() {
     return "AuditLog [id="
         + id
-        + ", description="
-        + description
         + ", entityType="
         + entityType
         + ", entityId="
@@ -174,10 +162,9 @@ public final class AuditLog {
   @SuppressWarnings("PMD.TooManyMethods")
   public static final class Builder {
     private String id;
-    private String description;
-    private AuditLogEntityType entityType;
+    private String entityType;
     private String entityId;
-    private AuditLogAction action;
+    private String action;
     private String oldData;
     private String newData;
     private Instant timestamp;
@@ -189,7 +176,6 @@ public final class AuditLog {
 
     public Builder(AuditLog log) {
       this.id = log.id;
-      this.description = log.description;
       this.entityType = log.entityType;
       this.entityId = log.entityId;
       this.action = log.action;
@@ -206,12 +192,7 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-
-    public Builder entityType(AuditLogEntityType entityType) {
+    public Builder entityType(String entityType) {
       this.entityType = entityType;
       return this;
     }
@@ -221,7 +202,7 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder action(AuditLogAction action) {
+    public Builder action(String action) {
       this.action = action;
       return this;
     }

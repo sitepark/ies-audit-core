@@ -1,0 +1,36 @@
+package com.sitepark.ies.audit.core.usecase.query.filter;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Objects;
+
+public final class AuthorityName implements Filter {
+
+  @SuppressWarnings(
+      "PMD.AvoidFieldNameMatchingTypeName") // so that when deserializing it has the desired format
+  private final String authorityName;
+
+  AuthorityName(@JsonProperty("authorityName") String entityType) {
+    Objects.requireNonNull(entityType, "AuthorityName is null");
+    this.authorityName = entityType;
+  }
+
+  public String getAuthorityName() {
+    return this.authorityName;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(this.authorityName);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return (o instanceof AuthorityName that)
+        && Objects.equals(this.authorityName, that.authorityName);
+  }
+
+  @Override
+  public String toString() {
+    return "EntityType{" + "AuthorityName='" + authorityName + '\'' + '}';
+  }
+}

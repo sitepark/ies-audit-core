@@ -3,7 +3,6 @@
  */
 module com.sitepark.ies.audit.core {
   exports com.sitepark.ies.audit.core.domain.entity;
-  exports com.sitepark.ies.audit.core.domain.value;
   exports com.sitepark.ies.audit.core.usecase.query;
   exports com.sitepark.ies.audit.core.usecase.query.sort;
   exports com.sitepark.ies.audit.core.usecase.query.filter;
@@ -27,6 +26,5 @@ module com.sitepark.ies.audit.core {
   opens com.sitepark.ies.audit.core.usecase.query.sort;
   opens com.sitepark.ies.audit.core.usecase.query.filter;
   opens com.sitepark.ies.audit.core.usecase.query.limit;
-  opens com.sitepark.ies.audit.core.domain.value;
   opens com.sitepark.ies.audit.core.usecase;
 }
