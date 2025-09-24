@@ -5,6 +5,14 @@ import java.time.Instant;
 @SuppressWarnings("PMD.TooManyMethods")
 public interface Filter {
 
+  static Id id(String id) {
+    return new Id(id);
+  }
+
+  static IdList idList(String... idList) {
+    return new IdList(idList);
+  }
+
   static Action action(String action) {
     return new Action(action);
   }
@@ -17,10 +25,6 @@ public interface Filter {
     return new AuthorityName(authorityName);
   }
 
-  static BatchId batchId(String batchId) {
-    return new BatchId(batchId);
-  }
-
   static DateRange dateRange(Instant from, Instant to) {
     return new DateRange(from, to);
   }
@@ -31,6 +35,10 @@ public interface Filter {
 
   static EntityIdList entityIdList(String... entityIdList) {
     return new EntityIdList(entityIdList);
+  }
+
+  static EntityName entityName(String entityName) {
+    return new EntityName(entityName);
   }
 
   static EntityType entityType(String entityType) {
@@ -47,6 +55,18 @@ public interface Filter {
 
   static UserIdList userIdList(String... idList) {
     return new UserIdList(idList);
+  }
+
+  static OnlyRoot onlyRoot(boolean onlyRoot) {
+    return new OnlyRoot(onlyRoot);
+  }
+
+  static ParentId parentId(String id) {
+    return new ParentId(id);
+  }
+
+  static ParentIdList parentIdList(String... idList) {
+    return new ParentIdList(idList);
   }
 
   static Or or(Filter... filterList) {

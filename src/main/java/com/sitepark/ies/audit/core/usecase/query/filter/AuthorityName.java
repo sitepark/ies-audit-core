@@ -9,9 +9,9 @@ public final class AuthorityName implements Filter {
       "PMD.AvoidFieldNameMatchingTypeName") // so that when deserializing it has the desired format
   private final String authorityName;
 
-  AuthorityName(@JsonProperty("authorityName") String entityType) {
-    Objects.requireNonNull(entityType, "AuthorityName is null");
-    this.authorityName = entityType;
+  AuthorityName(@JsonProperty("authorityName") String authorityName) {
+    Objects.requireNonNull(authorityName, "authorityName is null");
+    this.authorityName = authorityName;
   }
 
   public String getAuthorityName() {
@@ -31,6 +31,6 @@ public final class AuthorityName implements Filter {
 
   @Override
   public String toString() {
-    return "EntityType{" + "AuthorityName='" + authorityName + '\'' + '}';
+    return "EntityType{" + "authorityName='" + authorityName + '\'' + '}';
   }
 }

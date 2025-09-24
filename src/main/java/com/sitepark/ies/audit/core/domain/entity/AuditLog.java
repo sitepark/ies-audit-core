@@ -35,25 +35,27 @@ public final class AuditLog {
   private final String id;
   private final String entityType;
   private final String entityId;
+  private final String entityName;
   private final String action;
   private final String oldData;
   private final String newData;
   private final Instant timestamp;
   private final String userId;
   private final String authorityName;
-  private final String batchId;
+  private final String parentId;
 
   private AuditLog(Builder builder) {
     this.id = builder.id;
     this.entityType = builder.entityType;
     this.entityId = builder.entityId;
+    this.entityName = builder.entityName;
     this.action = builder.action;
     this.oldData = builder.oldData;
     this.newData = builder.newData;
     this.timestamp = builder.timestamp;
     this.userId = builder.userId;
     this.authorityName = builder.authorityName;
-    this.batchId = builder.batchId;
+    this.parentId = builder.parentId;
   }
 
   public static Builder builder() {
@@ -70,6 +72,10 @@ public final class AuditLog {
 
   public String entityId() {
     return entityId;
+  }
+
+  public String entityName() {
+    return entityName;
   }
 
   public String action() {
@@ -96,8 +102,8 @@ public final class AuditLog {
     return authorityName;
   }
 
-  public String batchId() {
-    return batchId;
+  public String parentId() {
+    return parentId;
   }
 
   public Builder toBuilder() {
@@ -110,13 +116,14 @@ public final class AuditLog {
         id,
         entityType,
         entityId,
+        entityName,
         action,
         oldData,
         newData,
         timestamp,
         userId,
         authorityName,
-        batchId);
+        parentId);
   }
 
   @Override
@@ -125,13 +132,14 @@ public final class AuditLog {
     return Objects.equals(id, other.id)
         && Objects.equals(entityType, other.entityType)
         && Objects.equals(entityId, other.entityId)
+        && Objects.equals(entityName, other.entityName)
         && Objects.equals(action, other.action)
         && Objects.equals(oldData, other.oldData)
         && Objects.equals(newData, other.newData)
         && Objects.equals(timestamp, other.timestamp)
         && Objects.equals(userId, other.userId)
         && Objects.equals(authorityName, other.authorityName)
-        && Objects.equals(batchId, other.batchId);
+        && Objects.equals(parentId, other.parentId);
   }
 
   @Override
@@ -142,6 +150,8 @@ public final class AuditLog {
         + entityType
         + ", entityId="
         + entityId
+        + ", entityName="
+        + entityName
         + ", action="
         + action
         + ", oldData="
@@ -154,8 +164,8 @@ public final class AuditLog {
         + userId
         + ", authorityName="
         + authorityName
-        + ", batchId="
-        + batchId
+        + ", parentId="
+        + parentId
         + "]";
   }
 
@@ -164,13 +174,14 @@ public final class AuditLog {
     private String id;
     private String entityType;
     private String entityId;
+    private String entityName;
     private String action;
     private String oldData;
     private String newData;
     private Instant timestamp;
     private String userId;
     private String authorityName;
-    private String batchId;
+    private String parentId;
 
     public Builder() {}
 
@@ -178,13 +189,14 @@ public final class AuditLog {
       this.id = log.id;
       this.entityType = log.entityType;
       this.entityId = log.entityId;
+      this.entityName = log.entityName;
       this.action = log.action;
       this.oldData = log.oldData;
       this.newData = log.newData;
       this.timestamp = log.timestamp;
       this.userId = log.userId;
       this.authorityName = log.authorityName;
-      this.batchId = log.batchId;
+      this.parentId = log.parentId;
     }
 
     public Builder id(String id) {
@@ -199,6 +211,11 @@ public final class AuditLog {
 
     public Builder entityId(String entityId) {
       this.entityId = entityId;
+      return this;
+    }
+
+    public Builder entityName(String entityName) {
+      this.entityName = entityName;
       return this;
     }
 
@@ -232,8 +249,8 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder batchId(String batchId) {
-      this.batchId = batchId;
+    public Builder parentId(String parentId) {
+      this.parentId = parentId;
       return this;
     }
 

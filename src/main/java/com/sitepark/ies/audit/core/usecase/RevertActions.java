@@ -4,6 +4,7 @@ import com.sitepark.ies.audit.core.domain.entity.AuditLog;
 import com.sitepark.ies.audit.core.port.AuditLogRepository;
 import com.sitepark.ies.audit.core.service.RevertService;
 import com.sitepark.ies.sharedkernel.audit.AuditLogService;
+import com.sitepark.ies.sharedkernel.audit.CreateAuditLogRequest;
 import com.sitepark.ies.sharedkernel.audit.RevertRequest;
 import jakarta.inject.Inject;
 import java.time.Clock;
@@ -31,7 +32,7 @@ public final class RevertActions {
 
   public void revert(List<String> auditLogIds) {
     Instant now = Instant.now(this.clock);
-    String batchId = auditLogIds.size() > 1 ? this.auditLogService.createAuditBatch(now) : null;
+    String batchId = auditLogIds.size() > 1 ? this.createBatchRemoveLog(now) : null;
     repository
         .getByIds(auditLogIds)
         .forEach(
@@ -40,17 +41,24 @@ public final class RevertActions {
             });
   }
 
-  public void revert(AuditLog auditLog, Instant createAt, String batchId) {
+  private String createBatchRemoveLog(Instant now) {
+    return this.auditLogService.createAuditLog(
+        new CreateAuditLogRequest(null, null, null, "REVERT_BATCH", null, null, now, null));
+  }
+
+  public void revert(AuditLog auditLog, Instant createAt, String parentId) {
 
     RevertRequest request =
         new RevertRequest(
+            auditLog.id(),
             auditLog.entityType(),
             auditLog.entityId(),
+            auditLog.entityName(),
             auditLog.action(),
             auditLog.oldData(),
             auditLog.newData(),
             createAt,
-            batchId);
+            parentId);
 
     revertService.revert(request);
   }
