@@ -55,8 +55,8 @@ public final class RevertActions {
             auditLog.entityId(),
             auditLog.entityName(),
             auditLog.action(),
-            auditLog.oldData(),
-            auditLog.newData(),
+            auditLog.backwardData(),
+            auditLog.forwardData(),
             createAt,
             parentId);
 

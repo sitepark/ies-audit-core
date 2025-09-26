@@ -37,8 +37,8 @@ public final class AuditLog {
   private final String entityId;
   private final String entityName;
   private final String action;
-  private final String oldData;
-  private final String newData;
+  private final String backwardData;
+  private final String forwardData;
   private final Instant timestamp;
   private final String userId;
   private final String authorityName;
@@ -50,8 +50,8 @@ public final class AuditLog {
     this.entityId = builder.entityId;
     this.entityName = builder.entityName;
     this.action = builder.action;
-    this.oldData = builder.oldData;
-    this.newData = builder.newData;
+    this.backwardData = builder.backwardData;
+    this.forwardData = builder.forwardData;
     this.timestamp = builder.timestamp;
     this.userId = builder.userId;
     this.authorityName = builder.authorityName;
@@ -82,12 +82,12 @@ public final class AuditLog {
     return action;
   }
 
-  public String oldData() {
-    return oldData;
+  public String backwardData() {
+    return backwardData;
   }
 
-  public String newData() {
-    return newData;
+  public String forwardData() {
+    return forwardData;
   }
 
   public Instant timestamp() {
@@ -118,8 +118,8 @@ public final class AuditLog {
         entityId,
         entityName,
         action,
-        oldData,
-        newData,
+        backwardData,
+        forwardData,
         timestamp,
         userId,
         authorityName,
@@ -134,8 +134,8 @@ public final class AuditLog {
         && Objects.equals(entityId, other.entityId)
         && Objects.equals(entityName, other.entityName)
         && Objects.equals(action, other.action)
-        && Objects.equals(oldData, other.oldData)
-        && Objects.equals(newData, other.newData)
+        && Objects.equals(backwardData, other.backwardData)
+        && Objects.equals(forwardData, other.forwardData)
         && Objects.equals(timestamp, other.timestamp)
         && Objects.equals(userId, other.userId)
         && Objects.equals(authorityName, other.authorityName)
@@ -154,10 +154,10 @@ public final class AuditLog {
         + entityName
         + ", action="
         + action
-        + ", oldData="
-        + oldData
-        + ", newData="
-        + newData
+        + ", backwardData="
+        + backwardData
+        + ", forwardData="
+        + forwardData
         + ", timestamp="
         + timestamp
         + ", userId="
@@ -176,8 +176,8 @@ public final class AuditLog {
     private String entityId;
     private String entityName;
     private String action;
-    private String oldData;
-    private String newData;
+    private String backwardData;
+    private String forwardData;
     private Instant timestamp;
     private String userId;
     private String authorityName;
@@ -191,8 +191,8 @@ public final class AuditLog {
       this.entityId = log.entityId;
       this.entityName = log.entityName;
       this.action = log.action;
-      this.oldData = log.oldData;
-      this.newData = log.newData;
+      this.backwardData = log.backwardData;
+      this.forwardData = log.forwardData;
       this.timestamp = log.timestamp;
       this.userId = log.userId;
       this.authorityName = log.authorityName;
@@ -224,13 +224,13 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder oldData(String oldData) {
-      this.oldData = oldData;
+    public Builder backwardData(String oldData) {
+      this.backwardData = oldData;
       return this;
     }
 
-    public Builder newData(String newData) {
-      this.newData = newData;
+    public Builder forwardData(String newData) {
+      this.forwardData = newData;
       return this;
     }
 
