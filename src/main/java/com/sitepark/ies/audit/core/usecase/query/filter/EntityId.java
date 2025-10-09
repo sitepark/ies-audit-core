@@ -1,8 +1,10 @@
 package com.sitepark.ies.audit.core.usecase.query.filter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sitepark.ies.sharedkernel.json.UniquePropertyType;
 import java.util.Objects;
 
+@UniquePropertyType(uniqueProperty = "entityId")
 public final class EntityId implements Filter {
 
   @SuppressWarnings(

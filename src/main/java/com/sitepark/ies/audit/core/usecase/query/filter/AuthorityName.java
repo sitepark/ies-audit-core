@@ -1,8 +1,10 @@
 package com.sitepark.ies.audit.core.usecase.query.filter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sitepark.ies.sharedkernel.json.UniquePropertyType;
 import java.util.Objects;
 
+@UniquePropertyType(uniqueProperty = "authorityName")
 public final class AuthorityName implements Filter {
 
   @SuppressWarnings(

@@ -1,9 +1,11 @@
 package com.sitepark.ies.audit.core.usecase.query.filter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.sitepark.ies.sharedkernel.json.UniquePropertyType;
 import java.time.Instant;
 import java.util.Objects;
 
+@UniquePropertyType(uniqueProperty = "dateRange")
 public final class DateRange implements Filter {
 
   private final Instant from;

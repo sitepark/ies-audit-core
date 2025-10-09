@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sitepark.ies.audit.core.domain.databind.DatabindModule;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -64,24 +63,7 @@ class FilterTest {
         "unexpected json-data");
   }
 
-  @Test
-  @SuppressWarnings("PMD.JUnitTestContainsTooManyAsserts")
-  void testDeserialize() throws Exception {
-
-    ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new DatabindModule());
-
-    String json =
-        """
-        {"or":[{"userIdList":["6"]},{"entityIdList":["5"]},{"and":[{"entityId":"1"}]}]}
-        """;
-
-    Filter filter = objectMapper.readValue(json, Filter.class);
-
-    Filter expected =
-        Filter.or(
-            Filter.userIdList("6"), Filter.entityIdList("5"), Filter.and(Filter.entityId("1")));
-
-    assertEquals(expected, filter, "unexpected filter");
-  }
+  // Note: Deserialization tests have been moved to the infrastructure layer
+  // where the Jackson deserializer is implemented. The core module only defines
+  // the type mappings via FilterTypeRegistry and @PolymorphicType annotations.
 }

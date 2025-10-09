@@ -1,7 +1,30 @@
 package com.sitepark.ies.audit.core.usecase.query.filter;
 
+import com.sitepark.ies.sharedkernel.json.UseUniquePropertyDeserializer;
 import java.time.Instant;
 
+@UseUniquePropertyDeserializer(
+    types = {
+      Action.class,
+      ActionList.class,
+      And.class,
+      AuthorityName.class,
+      DateRange.class,
+      EntityId.class,
+      EntityIdList.class,
+      EntityName.class,
+      EntityType.class,
+      EntityTypeList.class,
+      Id.class,
+      IdList.class,
+      Not.class,
+      OnlyRoot.class,
+      Or.class,
+      ParentId.class,
+      ParentIdList.class,
+      UserId.class,
+      UserIdList.class
+    })
 @SuppressWarnings("PMD.TooManyMethods")
 public interface Filter {
 
