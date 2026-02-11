@@ -3,12 +3,14 @@
  */
 module com.sitepark.ies.audit.core {
   exports com.sitepark.ies.audit.core.domain.entity;
+  exports com.sitepark.ies.audit.core.domain.value;
   exports com.sitepark.ies.audit.core.usecase.query;
   exports com.sitepark.ies.audit.core.usecase.query.sort;
   exports com.sitepark.ies.audit.core.usecase.query.filter;
   exports com.sitepark.ies.audit.core.usecase.query.limit;
   exports com.sitepark.ies.audit.core.domain.exception;
   exports com.sitepark.ies.audit.core.port;
+  exports com.sitepark.ies.audit.core.service;
   exports com.sitepark.ies.audit.core.usecase;
 
   requires jakarta.inject;
@@ -22,9 +24,12 @@ module com.sitepark.ies.audit.core {
   requires com.fasterxml.jackson.databind;
 
   opens com.sitepark.ies.audit.core.domain.entity;
+  opens com.sitepark.ies.audit.core.domain.value;
   opens com.sitepark.ies.audit.core.usecase.query;
   opens com.sitepark.ies.audit.core.usecase.query.sort;
   opens com.sitepark.ies.audit.core.usecase.query.filter;
   opens com.sitepark.ies.audit.core.usecase.query.limit;
   opens com.sitepark.ies.audit.core.usecase;
+  opens com.sitepark.ies.audit.core.service;
+  opens com.sitepark.ies.audit.core.domain.exception;
 }

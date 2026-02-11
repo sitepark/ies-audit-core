@@ -1,6 +1,6 @@
 package com.sitepark.ies.audit.core.port;
 
-import com.sitepark.ies.sharedkernel.audit.ReverseActionHandler;
+import com.sitepark.ies.audit.core.service.ReverseActionHandler;
 
 @SuppressWarnings("PMD.ImplicitFunctionalInterface")
 public interface ReversalHandlerRegistry {

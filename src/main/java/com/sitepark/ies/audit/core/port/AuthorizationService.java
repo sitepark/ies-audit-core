@@ -1,5 +1,5 @@
 package com.sitepark.ies.audit.core.port;
 
-public interface AccessControl {
+public interface AuthorizationService {
   boolean isAuditLogsReadable();
 }

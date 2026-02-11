@@ -1,27 +1,27 @@
 package com.sitepark.ies.audit.core.usecase;
 
 import com.sitepark.ies.audit.core.domain.entity.AuditLog;
-import com.sitepark.ies.audit.core.port.AccessControl;
 import com.sitepark.ies.audit.core.port.AuditLogRepository;
+import com.sitepark.ies.audit.core.port.AuthorizationService;
 import com.sitepark.ies.audit.core.usecase.query.Query;
 import com.sitepark.ies.audit.core.usecase.query.Result;
 import com.sitepark.ies.sharedkernel.security.AccessDeniedException;
 import jakarta.inject.Inject;
 
-public final class SearchAuditLogs {
+public final class SearchAuditLogsUseCase {
 
   private final AuditLogRepository repository;
 
-  private final AccessControl accessControl;
+  private final AuthorizationService authorizationService;
 
   @Inject
-  SearchAuditLogs(AuditLogRepository repository, AccessControl accessControl) {
+  SearchAuditLogsUseCase(AuditLogRepository repository, AuthorizationService authorizationService) {
     this.repository = repository;
-    this.accessControl = accessControl;
+    this.authorizationService = authorizationService;
   }
 
   public Result<AuditLog> searchAuditLogs(Query query) {
-    if (!this.accessControl.isAuditLogsReadable()) {
+    if (!this.authorizationService.isAuditLogsReadable()) {
       throw new AccessDeniedException("Access denied: Audit logs are not readable");
     }
     return this.repository.search(query);

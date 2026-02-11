@@ -12,9 +12,6 @@ public final class OnlyRoot implements Filter {
   private final boolean onlyRoot;
 
   OnlyRoot(@JsonProperty("onlyRoot") boolean onlyRoot) {
-    if (!onlyRoot) {
-      throw new IllegalArgumentException("onlyRoot must be true");
-    }
     this.onlyRoot = onlyRoot;
   }
 
