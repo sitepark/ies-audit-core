@@ -31,6 +31,6 @@ public final class OnlyRoot implements Filter {
 
   @Override
   public String toString() {
-    return "OnlyRoot{" + "onyRoot='" + onlyRoot + '\'' + '}';
+    return "OnlyRoot{" + "onlyRoot='" + onlyRoot + '\'' + '}';
   }
 }
