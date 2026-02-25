@@ -1,10 +1,13 @@
 package com.sitepark.ies.audit.core.service;
 
+import com.sitepark.ies.audit.core.domain.entity.AuditLog;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 public interface AuditLogService {
+
+  Optional<AuditLog> getAuditLog(String id);
 
   List<String> getRecursiveChildIds(String parentId);
 

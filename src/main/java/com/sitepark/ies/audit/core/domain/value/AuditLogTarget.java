@@ -27,6 +27,10 @@ public record AuditLogTarget(String type, String id, String name) implements Ser
     return new AuditLogTarget(EntityRef.toTypeString(type), id, name);
   }
 
+  public EntityRef toEntityRef() {
+    return EntityRef.of(this.type(), this.id());
+  }
+
   @Override
   public String toString() {
     return "AuditLogTarget{"
