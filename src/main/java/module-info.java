@@ -1,6 +1,9 @@
+import org.jspecify.annotations.NullMarked;
+
 /**
  * This module contains the essential business logic and data structures, of the user repository.
  */
+@NullMarked
 module com.sitepark.ies.audit.core {
   exports com.sitepark.ies.audit.core.domain.entity;
   exports com.sitepark.ies.audit.core.domain.value;
@@ -13,14 +16,13 @@ module com.sitepark.ies.audit.core {
   exports com.sitepark.ies.audit.core.service;
   exports com.sitepark.ies.audit.core.usecase;
 
+  requires static org.jspecify;
   requires jakarta.inject;
   requires com.fasterxml.jackson.datatype.jdk8;
   requires com.fasterxml.jackson.datatype.jsr310;
   requires com.sitepark.ies.sharedkernel;
   requires org.apache.logging.log4j;
-  requires static com.github.spotbugs.annotations;
   requires com.fasterxml.jackson.annotation;
-  requires static org.jetbrains.annotations;
   requires com.fasterxml.jackson.databind;
 
   opens com.sitepark.ies.audit.core.domain.entity;

@@ -7,13 +7,11 @@ import org.junit.jupiter.api.Test;
 class OnlyRootTest {
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testEquals() {
     EqualsVerifier.forClass(OnlyRoot.class).verify();
   }
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testToString() {
     ToStringVerifier.forClass(OnlyRoot.class).verify();
   }

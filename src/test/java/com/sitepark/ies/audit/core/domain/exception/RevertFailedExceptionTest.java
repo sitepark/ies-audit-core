@@ -8,28 +8,28 @@ import org.junit.jupiter.api.Test;
 
 class RevertFailedExceptionTest {
 
-  private static final class TestRevertFailedException extends RevertFailedException {
+  private static final class StubRevertFailedException extends RevertFailedException {
 
     @Serial private static final long serialVersionUID = 1L;
 
-    TestRevertFailedException() {
+    StubRevertFailedException() {
       super();
     }
 
-    TestRevertFailedException(String msg) {
+    StubRevertFailedException(String msg) {
       super(msg);
     }
   }
 
   @Test
   void testDefaultConstructorHasNullMessage() {
-    RevertFailedException exception = new TestRevertFailedException();
+    RevertFailedException exception = new StubRevertFailedException();
     assertNull(exception.getMessage(), "Default constructor should produce null message");
   }
 
   @Test
   void testMessageConstructor() {
-    RevertFailedException exception = new TestRevertFailedException("revert failed");
+    RevertFailedException exception = new StubRevertFailedException("revert failed");
     assertEquals("revert failed", exception.getMessage(), "Unexpected exception message");
   }
 }

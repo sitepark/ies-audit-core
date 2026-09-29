@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 The **IES Audit Core Package** is a domain-agnostic audit logging and undo mechanism built using Clean Architecture principles. It records domain-relevant changes (create/update/delete actions) and supports reverting those changes by delegating to the owning bounded context.
 
-This is a Java 21 Maven project using the Java Platform Module System (JPMS).
+This is a Java 25 Maven project using the Java Platform Module System (JPMS).
 
 ## Build Commands
 
@@ -41,15 +41,14 @@ mvn spotless:apply
 # Check formatting
 mvn spotless:check
 
-# Run SpotBugs static analysis
-mvn spotbugs:check
-
 # Run PMD checks
 mvn pmd:check
 
 # Run all quality checks (included in verify phase)
 mvn verify
 ```
+
+Error Prone and NullAway (JSpecify mode) run during compilation, `-Werror` turns every warning into an error. The code is `@NullMarked`; nullable points use `org.jspecify.annotations.Nullable`.
 
 ### Package and Deploy
 

@@ -12,13 +12,11 @@ import org.junit.jupiter.api.Test;
 class RevertActionsRequestTest {
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testEquals() {
     EqualsVerifier.forClass(RevertActionsRequest.class).suppress(Warning.NULL_FIELDS).verify();
   }
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testToString() {
     ToStringVerifier.forClass(RevertActionsRequest.class).verify();
   }
