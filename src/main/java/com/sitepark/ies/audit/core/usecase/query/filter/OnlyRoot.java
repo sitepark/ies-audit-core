@@ -26,7 +26,7 @@ public final class OnlyRoot implements Filter {
 
   @Override
   public boolean equals(Object o) {
-    return (o instanceof OnlyRoot that) && Objects.equals(this.onlyRoot, that.onlyRoot);
+    return (o instanceof OnlyRoot that) && this.onlyRoot == that.onlyRoot;
   }
 
   @Override

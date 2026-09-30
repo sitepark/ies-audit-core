@@ -2,6 +2,7 @@ package com.sitepark.ies.audit.core.domain.entity;
 
 import java.time.Instant;
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Represents a single audit entry describing a domain-relevant change within the system.
@@ -29,7 +30,9 @@ import java.util.Objects;
  *   <li>Monitoring and reporting across bounded contexts
  * </ul>
  */
-@SuppressWarnings("PMD.DataClass")
+// TooManyMethods and AvoidFieldNameMatchingMethodName: immutable value object with one accessor
+// per property
+@SuppressWarnings({"PMD.DataClass", "PMD.TooManyMethods", "PMD.AvoidFieldNameMatchingMethodName"})
 public final class AuditLog {
 
   private final String id;
@@ -40,9 +43,9 @@ public final class AuditLog {
   private final String backwardData;
   private final String forwardData;
   private final Instant timestamp;
-  private final String userId;
+  private final @Nullable String userId;
   private final String authorityName;
-  private final String parentId;
+  private final @Nullable String parentId;
 
   private AuditLog(Builder builder) {
     this.id = builder.id;
@@ -94,7 +97,7 @@ public final class AuditLog {
     return timestamp;
   }
 
-  public String userId() {
+  public @Nullable String userId() {
     return userId;
   }
 
@@ -102,7 +105,7 @@ public final class AuditLog {
     return authorityName;
   }
 
-  public String parentId() {
+  public @Nullable String parentId() {
     return parentId;
   }
 
@@ -169,7 +172,8 @@ public final class AuditLog {
         + "]";
   }
 
-  @SuppressWarnings("PMD.TooManyMethods")
+  // fields are set via fluent setters, completeness is the caller's responsibility
+  @SuppressWarnings({"PMD.TooManyMethods", "NullAway.Init"})
   public static final class Builder {
     private String id;
     private String entityType;
@@ -179,9 +183,9 @@ public final class AuditLog {
     private String backwardData;
     private String forwardData;
     private Instant timestamp;
-    private String userId;
+    private @Nullable String userId;
     private String authorityName;
-    private String parentId;
+    private @Nullable String parentId;
 
     public Builder() {}
 
@@ -239,7 +243,7 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder userId(String userId) {
+    public Builder userId(@Nullable String userId) {
       this.userId = userId;
       return this;
     }
@@ -249,7 +253,7 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder parentId(String parentId) {
+    public Builder parentId(@Nullable String parentId) {
       this.parentId = parentId;
       return this;
     }

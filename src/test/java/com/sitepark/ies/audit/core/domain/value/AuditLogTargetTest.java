@@ -10,13 +10,11 @@ import org.junit.jupiter.api.Test;
 class AuditLogTargetTest {
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testEquals() {
     EqualsVerifier.forClass(AuditLogTarget.class).verify();
   }
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testToString() {
     ToStringVerifier.forClass(AuditLogTarget.class).verify();
   }

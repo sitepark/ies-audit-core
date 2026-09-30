@@ -7,13 +7,11 @@ import org.junit.jupiter.api.Test;
 class ParentIdListTest {
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testEquals() {
     EqualsVerifier.forClass(ParentIdList.class).verify();
   }
 
   @Test
-  @SuppressWarnings("PMD.JUnitTestsShouldIncludeAssert")
   void testToString() {
     ToStringVerifier.forClass(ParentIdList.class).verify();
   }

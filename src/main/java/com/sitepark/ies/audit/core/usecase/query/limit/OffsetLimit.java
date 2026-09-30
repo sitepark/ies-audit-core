@@ -38,7 +38,7 @@ public final class OffsetLimit implements Limit {
     if (!(other instanceof OffsetLimit that)) {
       return false;
     }
-    return Objects.equals(this.offset, that.offset) && Objects.equals(this.limit, that.limit);
+    return this.offset == that.offset && this.limit == that.limit;
   }
 
   @Override

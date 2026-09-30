@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+// the test covers every filter implementation, so it references many types
+@SuppressWarnings("PMD.CouplingBetweenObjects")
 class FilterTest {
 
   @Test
