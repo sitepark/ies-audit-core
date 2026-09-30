@@ -8,6 +8,8 @@ import com.sitepark.ies.audit.core.service.RevertRequest;
 import jakarta.inject.Inject;
 import java.time.Clock;
 import java.time.Instant;
+import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 public final class RevertActionsUseCase {
 
@@ -33,11 +35,11 @@ public final class RevertActionsUseCase {
             });
   }
 
-  public void revert(AuditLog auditLog, Instant createAt, String parentId) {
+  public void revert(AuditLog auditLog, Instant createAt, @Nullable String parentId) {
 
     RevertRequest request =
         new RevertRequest(
-            auditLog.id(),
+            Objects.requireNonNull(auditLog.id(), "stored audit log has an id"),
             new AuditLogTarget(auditLog.entityType(), auditLog.entityId(), auditLog.entityName()),
             auditLog.action(),
             auditLog.backwardData(),
