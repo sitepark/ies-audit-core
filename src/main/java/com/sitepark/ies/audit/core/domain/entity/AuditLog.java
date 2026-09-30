@@ -35,13 +35,13 @@ import org.jspecify.annotations.Nullable;
 @SuppressWarnings({"PMD.DataClass", "PMD.TooManyMethods", "PMD.AvoidFieldNameMatchingMethodName"})
 public final class AuditLog {
 
-  private final String id;
-  private final String entityType;
-  private final String entityId;
-  private final String entityName;
+  private final @Nullable String id;
+  private final @Nullable String entityType;
+  private final @Nullable String entityId;
+  private final @Nullable String entityName;
   private final String action;
-  private final String backwardData;
-  private final String forwardData;
+  private final @Nullable String backwardData;
+  private final @Nullable String forwardData;
   private final Instant timestamp;
   private final @Nullable String userId;
   private final String authorityName;
@@ -65,19 +65,19 @@ public final class AuditLog {
     return new Builder();
   }
 
-  public String id() {
+  public @Nullable String id() {
     return id;
   }
 
-  public String entityType() {
+  public @Nullable String entityType() {
     return entityType;
   }
 
-  public String entityId() {
+  public @Nullable String entityId() {
     return entityId;
   }
 
-  public String entityName() {
+  public @Nullable String entityName() {
     return entityName;
   }
 
@@ -85,11 +85,11 @@ public final class AuditLog {
     return action;
   }
 
-  public String backwardData() {
+  public @Nullable String backwardData() {
     return backwardData;
   }
 
-  public String forwardData() {
+  public @Nullable String forwardData() {
     return forwardData;
   }
 
@@ -175,13 +175,13 @@ public final class AuditLog {
   // fields are set via fluent setters, completeness is the caller's responsibility
   @SuppressWarnings({"PMD.TooManyMethods", "NullAway.Init"})
   public static final class Builder {
-    private String id;
-    private String entityType;
-    private String entityId;
-    private String entityName;
+    private @Nullable String id;
+    private @Nullable String entityType;
+    private @Nullable String entityId;
+    private @Nullable String entityName;
     private String action;
-    private String backwardData;
-    private String forwardData;
+    private @Nullable String backwardData;
+    private @Nullable String forwardData;
     private Instant timestamp;
     private @Nullable String userId;
     private String authorityName;
@@ -203,22 +203,22 @@ public final class AuditLog {
       this.parentId = log.parentId;
     }
 
-    public Builder id(String id) {
+    public Builder id(@Nullable String id) {
       this.id = id;
       return this;
     }
 
-    public Builder entityType(String entityType) {
+    public Builder entityType(@Nullable String entityType) {
       this.entityType = entityType;
       return this;
     }
 
-    public Builder entityId(String entityId) {
+    public Builder entityId(@Nullable String entityId) {
       this.entityId = entityId;
       return this;
     }
 
-    public Builder entityName(String entityName) {
+    public Builder entityName(@Nullable String entityName) {
       this.entityName = entityName;
       return this;
     }
@@ -228,12 +228,12 @@ public final class AuditLog {
       return this;
     }
 
-    public Builder backwardData(String oldData) {
+    public Builder backwardData(@Nullable String oldData) {
       this.backwardData = oldData;
       return this;
     }
 
-    public Builder forwardData(String newData) {
+    public Builder forwardData(@Nullable String newData) {
       this.forwardData = newData;
       return this;
     }

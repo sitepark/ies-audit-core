@@ -3,6 +3,8 @@ package com.sitepark.ies.audit.core.domain.value;
 import com.sitepark.ies.sharedkernel.domain.EntityRef;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Represents the target of an audit log entry, describing the specific object that was modified or
@@ -15,20 +17,23 @@ import java.io.Serializable;
  * @param id The unique identifier of the specific object
  * @param name An optional human-readable name of the object
  */
-public record AuditLogTarget(String type, String id, String name) implements Serializable {
+public record AuditLogTarget(@Nullable String type, @Nullable String id, @Nullable String name)
+    implements Serializable {
 
   @Serial private static final long serialVersionUID = 1L;
 
-  public static AuditLogTarget of(EntityRef entityRef, String name) {
+  public static AuditLogTarget of(EntityRef entityRef, @Nullable String name) {
     return new AuditLogTarget(entityRef.type(), entityRef.id(), name);
   }
 
-  public static AuditLogTarget of(Class<?> type, String id, String name) {
+  public static AuditLogTarget of(Class<?> type, @Nullable String id, @Nullable String name) {
     return new AuditLogTarget(EntityRef.toTypeString(type), id, name);
   }
 
   public EntityRef toEntityRef() {
-    return EntityRef.of(this.type(), this.id());
+    return EntityRef.of(
+        Objects.requireNonNull(this.type(), "target has no type"),
+        Objects.requireNonNull(this.id(), "target has no id"));
   }
 
   @Override

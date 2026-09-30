@@ -2,6 +2,7 @@ package com.sitepark.ies.audit.core.usecase;
 
 import com.sitepark.ies.audit.core.domain.value.AuditLogTarget;
 import java.time.Instant;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Represents a single audit entry describing a domain-relevant change within the system.
@@ -41,7 +42,7 @@ import java.time.Instant;
 public record CreateAuditLogRequest(
     AuditLogTarget target,
     String action,
-    String backwardData,
-    String forwardData,
+    @Nullable String backwardData,
+    @Nullable String forwardData,
     Instant changedAt,
-    String parentId) {}
+    @Nullable String parentId) {}
