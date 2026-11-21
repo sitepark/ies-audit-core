@@ -18,12 +18,9 @@ module com.sitepark.ies.audit.core {
 
   requires static org.jspecify;
   requires jakarta.inject;
-  requires com.fasterxml.jackson.datatype.jdk8;
-  requires com.fasterxml.jackson.datatype.jsr310;
   requires com.sitepark.ies.sharedkernel;
   requires org.apache.logging.log4j;
   requires com.fasterxml.jackson.annotation;
-  requires com.fasterxml.jackson.databind;
 
   opens com.sitepark.ies.audit.core.domain.entity;
   opens com.sitepark.ies.audit.core.domain.value;

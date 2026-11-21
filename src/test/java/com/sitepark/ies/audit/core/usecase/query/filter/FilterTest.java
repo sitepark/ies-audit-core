@@ -3,11 +3,12 @@ package com.sitepark.ies.audit.core.usecase.query.filter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 // the test covers every filter implementation, so it references many types
 @SuppressWarnings("PMD.CouplingBetweenObjects")
@@ -55,7 +56,8 @@ class FilterTest {
         Filter.or(
             Filter.userIdList("6"), Filter.entityIdList("5"), Filter.and(Filter.entityId("1")));
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    JsonMapper objectMapper =
+        JsonMapper.builder().disable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY).build();
     String json = objectMapper.writeValueAsString(filter);
 
     assertEquals(
